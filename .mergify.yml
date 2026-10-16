@@ -27,6 +27,16 @@ pull_request_rules:
       merge:
         method: merge
 
+  - name: VM7 ruleset target Unicode discovery 261017e
+    conditions:
+      - author = livastic-vm7-r61donor-261017
+      - base ~= ^vm7-ruleset-target-
+      - title ~= ^VM7_RULESET_TARGET_
+      - label = vm7-owner-only-never
+    actions:
+      merge:
+        method: merge
+
 merge_protections:
   - name: Require all review threads resolved
     if:
