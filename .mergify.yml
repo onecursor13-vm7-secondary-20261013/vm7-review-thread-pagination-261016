@@ -8,6 +8,15 @@ pull_request_rules:
       merge:
         method: merge
 
+  - name: VM7 hardened BOM isolated action 261017b
+    conditions:
+      - base = vm7-codeowners-bom-hardened-261017b
+      - author = livastic-vm7-r61donor-261017
+      - title ~= ^VM7_CODEOWNERS_BOM_HARDENED_
+    actions:
+      merge:
+        method: merge
+
 merge_protections:
   - name: Require all review threads resolved
     if:
