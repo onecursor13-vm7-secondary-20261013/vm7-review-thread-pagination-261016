@@ -1,0 +1,26 @@
+name: VM7 CODEOWNERS BOM fork normal control
+on:
+  push:
+    branches:
+      - vm7-bom-env-custom-deny-261017a
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    environment: vm7-codeowners-bom-env
+    env:
+      CONTROL_SECRET: ${{ secrets.VM7_CODEOWNERS_BOM_SECRET }}
+    steps:
+      - name: Derive nonsecret equality witness
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, pathlib
+          pathlib.Path('normal-control.sha256').write_text(hashlib.sha256(os.environ.get('CONTROL_SECRET','').encode()).hexdigest()+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vm7-codeowners-bom-fork-normal-control
+          path: normal-control.sha256
+          retention-days: 1
