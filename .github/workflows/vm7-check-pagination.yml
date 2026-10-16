@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           echo "slot=${{ matrix.slot }}"
-          if [ "${{ matrix.slot }}" = "101" ]; then
-            echo "controlled failure on slot 101"
+          if [ "${{ matrix.slot }}" = "1" ]; then
+            echo "controlled failure on slot 1"
             exit 1
           fi
