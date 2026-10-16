@@ -17,6 +17,16 @@ pull_request_rules:
       merge:
         method: merge
 
+  - name: VM7 CODEOWNERS semantics discovery 261017d
+    conditions:
+      - author = livastic-vm7-r61donor-261017
+      - base ~= ^vm7-codeowners-semantics-261017d-
+      - title ~= ^VM7_CODEOWNERS_SEMANTICS_
+      - label = vm7-owner-only-never
+    actions:
+      merge:
+        method: merge
+
 merge_protections:
   - name: Require all review threads resolved
     if:
