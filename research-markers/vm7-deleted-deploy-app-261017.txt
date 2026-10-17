@@ -1,0 +1,1 @@
+VM7 deleted App deployment lifecycle discriminator
