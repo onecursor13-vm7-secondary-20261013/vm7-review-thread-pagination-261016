@@ -46,6 +46,16 @@ pull_request_rules:
       merge:
         method: merge
 
+
+  - name: VM7 overlapping protection source canonical 261017
+    conditions:
+      - base = vm7-overlap-protection-source-261017
+      - author = onecursor13-vm7-primary-20261012
+      - title = VM7_OVERLAP_PROTECTION_CANONICAL_261017
+    actions:
+      merge:
+        method: merge
+
 merge_protections:
   - name: Require all review threads resolved
     if:
