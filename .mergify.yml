@@ -1,4 +1,14 @@
 pull_request_rules:
+  - name: VM7 unresolved outdated thread gate 261017
+    conditions:
+      - base = main
+      - author = onecursor13-vm7-primary-20261012
+      - title = VM7_REVIEWTHREAD_OUTDATED_ATTACK_261017
+      - files = vm7-reviewthread-outdated-trigger-261017.txt
+    actions:
+      merge:
+        method: merge
+
   - name: VM7 isolated CODEOWNERS differential action 261017a
     conditions:
       - base = vm7-codeowners-diff-base-261017a
