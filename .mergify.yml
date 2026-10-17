@@ -1,4 +1,13 @@
 pull_request_rules:
+  - name: VM7 detached-head collaborator thread gate 261017
+    conditions:
+      - base = main
+      - title = VM7_REVIEWTHREAD_DETACHED_ATTACK_261017
+      - files = vm7-collaborator-trigger-261017.txt
+    actions:
+      merge:
+        method: merge
+
   - name: VM7 isolated CODEOWNERS differential action 261017a
     conditions:
       - base = vm7-codeowners-diff-base-261017a
