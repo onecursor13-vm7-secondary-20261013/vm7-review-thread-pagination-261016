@@ -1,4 +1,14 @@
 pull_request_rules:
+  - name: VM7 external author self-padding review-thread gate 261018
+    conditions:
+      - base = main
+      - author = livastic-vm7-r61donor-261017
+      - title = VM7_REVIEWTHREAD_SELF_PADDING_ATTACK_261018
+      - files = vm7-root5-selfpad-trigger-261018.txt
+    actions:
+      merge:
+        method: merge
+
   - name: VM7 isolated CODEOWNERS differential action 261017a
     conditions:
       - base = vm7-codeowners-diff-base-261017a
