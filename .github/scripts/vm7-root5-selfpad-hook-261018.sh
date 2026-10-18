@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 umask 077
-printf 'baseline\n' > protected-secret.bin
+printf '%s' "$ROOT5_SELF_PADDING_SECRET" > protected-secret.bin
