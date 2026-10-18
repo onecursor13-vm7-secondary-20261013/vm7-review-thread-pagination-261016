@@ -1,10 +1,47 @@
 pull_request_rules:
-  - name: VM7 review-thread page2 protected secret consumer 261018
+  - name: VM7 isolated CODEOWNERS differential action 261017a
     conditions:
-      - base = main
-      - author = onecursor13-vm7-primary-20261012
-      - title = VM7_REVIEWTHREAD_PAGE2_PROTECTED_SECRET_261018
-      - files = vm7-root5-secret-trigger-261018.txt
+      - base = vm7-codeowners-diff-base-261017a
+      - author = livastic-vm7-r61donor-261017
+      - title ~= ^VM7_CODEOWNERS_DIFF_
+    actions:
+      merge:
+        method: merge
+
+  - name: VM7 hardened BOM isolated action 261017b
+    conditions:
+      - base = vm7-codeowners-bom-hardened-261017b
+      - author = livastic-vm7-r61donor-261017
+      - title ~= ^VM7_CODEOWNERS_BOM_HARDENED_
+    actions:
+      merge:
+        method: merge
+
+  - name: VM7 CODEOWNERS semantics discovery 261017d
+    conditions:
+      - author = livastic-vm7-r61donor-261017
+      - base ~= ^vm7-codeowners-semantics-261017d-
+      - title ~= ^VM7_CODEOWNERS_SEMANTICS_
+      - label = vm7-owner-only-never
+    actions:
+      merge:
+        method: merge
+
+  - name: VM7 ruleset target Unicode discovery 261017e
+    conditions:
+      - author = livastic-vm7-r61donor-261017
+      - base ~= ^vm7-ruleset-target-
+      - title ~= ^VM7_RULESET_TARGET_
+      - label = vm7-owner-only-never
+    actions:
+      merge:
+        method: merge
+
+  - name: VM7 ruleset target Unicode canonical 261017f
+    conditions:
+      - author = livastic-vm7-r61donor-261017
+      - base ~= ^vm7-ruleset-target-
+      - title ~= ^VM7_RULESET_TARGET_CANONICAL_
     actions:
       merge:
         method: merge
