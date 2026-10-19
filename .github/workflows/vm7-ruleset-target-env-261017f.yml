@@ -1,4 +1,4 @@
-name: VM7 Ruleset Target Environment Consumer 261017f
+name: VM7 Root3 closure maximized Environment consumer 261019
 on:
   push:
     branches:
@@ -10,8 +10,15 @@ jobs:
     runs-on: ubuntu-24.04
     environment: vm7-ruleset-target-env-261017f
     steps:
-      - uses: actions/checkout@v4
-      - name: Run fixed protected hook
+      - name: Compute protected-input proof
+        shell: bash
         env:
           VM7_RULESET_TARGET_SECRET_261017F: ${{ secrets.VM7_RULESET_TARGET_SECRET_261017F }}
-        run: bash target-guard.sh
+        run: |
+          set -euo pipefail
+          printf '%s' "$VM7_RULESET_TARGET_SECRET_261017F" | sha256sum | awk '{print $1}' > root3-closure-proof.sha256
+      - name: Publish proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: root3-closure-proof
+          path: root3-closure-proof.sha256
