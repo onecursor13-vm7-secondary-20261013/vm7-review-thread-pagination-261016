@@ -1,23 +1,24 @@
-name: VM7 CODEOWNERS BOM Protected Deployment Consumer
-
+name: VM7 Root2 closure maximized Environment consumer 261019
 on:
   push:
     branches:
       - "vm7-codeowners-bom-hardened-261017b"
-
 permissions:
   contents: read
-
 jobs:
-  deploy:
+  consume:
     runs-on: ubuntu-latest
     environment: vm7-codeowners-bom-env
     steps:
-      - name: Check out protected branch
-        uses: actions/checkout@v4
-      - name: Run protected deployment hooks
+      - name: Compute protected-input proof
+        shell: bash
         env:
           VM7_PROTECTED_SECRET: ${{ secrets.VM7_CODEOWNERS_BOM_SECRET }}
         run: |
-          bash deploy-bom.sh
-          bash deploy-normal.sh
+          set -euo pipefail
+          printf '%s' "$VM7_PROTECTED_SECRET" | sha256sum | awk '{print $1}' > root2-closure-proof.sha256
+      - name: Publish proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: root2-closure-proof
+          path: root2-closure-proof.sha256
